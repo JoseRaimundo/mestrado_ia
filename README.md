@@ -1,3 +1,6 @@
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
+
 # Inteligência Computacional: Teoria e Prática
 
 # Teoria
