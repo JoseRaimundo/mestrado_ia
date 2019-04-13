@@ -9,10 +9,7 @@
 ### Neurônio Artificial
 ### Conceito de Redes Neurais
 ### Rede MLP
-
-```math
-SE = \frac{\sigma}{\sqrt{n}}
-```
+:blush:
 
 $$
 E(n)=\frac{1}{2Q}\sum_{q=1}^{Q}e_{q}^{2}(n)
