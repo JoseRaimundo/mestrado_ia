@@ -11,15 +11,17 @@
 ### Rede MLP
 :blush:
 
-$$
-E(n)=\frac{1}{2Q}\sum_{q=1}^{Q}e_{q}^{2}(n)
-$$
+	$$
+	E(n)=\frac{1}{2Q}\sum_{q=1}^{Q}e_{q}^{2}(n)
+	$$
 
 ```math_def
 \newcommand{\foo}{Foo}
 ```
 
-\begin{equation}E(n)=\frac{1}{2Q}\sum_{q=1}^{Q}e_{q}^{2}(n)\end{equation}
+	\begin{equation}
+	E(n)=\frac{1}{2Q}\sum_{q=1}^{Q}e_{q}^{2}(n)
+	\end{equation}
 
 ### Rede RBF
 
