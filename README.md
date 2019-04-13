@@ -1,7 +1,22 @@
 
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
 
 # Inteligência Computacional: Teoria e Prática
+
+<img src="https://latex.codecogs.com/gif.latex?O_t=\text { Onset event at time bin } t " /> 
+<img src="https://latex.codecogs.com/gif.latex?s=\text { sensor reading }  " /> 
+<img src="https://latex.codecogs.com/gif.latex?P(s | O_t )=\text { Probability of a sensor reading value when sleep onset is observed at a time bin } t " />
+
+
+markdown: kramdown
+
+kramdown:
+  input: GFM
+
 
 # Teoria
 ## Introdução
