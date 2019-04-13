@@ -1,10 +1,9 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
+ 
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 
 # Inteligência Computacional: Teoria e Prática
 
@@ -30,15 +29,19 @@ kramdown:
 ### Rede MLP
 :blush:
 
-<p align="center"><img src="/tex/0677c4edb0f0bde543957da35d02f320.svg?invert_in_darkmode&sanitize=true" align=middle width=149.71650375pt height=50.621184899999996pt/></p>
+$$
+E(n)=\frac{1}{2Q}\sum_{q=1}^{Q}e_{q}^{2}(n)
+$$
 
 ```math_def
 \newcommand{\foo}{Foo}
 ```
 
-<p align="center"><img src="/tex/685d2541e23bc3d28f76c6e25a3018c0.svg?invert_in_darkmode&sanitize=true" align=middle width=424.9952305499999pt height=50.621184899999996pt/></p>
+\begin{equation}
+E(n)=\frac{1}{2Q}\sum_{q=1}^{Q}e_{q}^{2}(n)
+\end{equation}
 	
-<img src="/tex/ba9ecfc1e012f30eac32938a0bd6fd43.svg?invert_in_darkmode&sanitize=true" align=middle width=136.75778984999997pt height=27.14148359999999pt/>
+$\sqrt{3x-1}+(1+x)^2$
 
 ### Rede RBF
 
