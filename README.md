@@ -1,21 +1,4 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
 
- 
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
-
-# Inteligência Computacional: Teoria e Prática
-
-<img src="https://latex.codecogs.com/gif.latex?O_t=\text { Onset event at time bin } t " /> 
-<img src="https://latex.codecogs.com/gif.latex?s=\text { sensor reading }  " /> 
-<img src="https://latex.codecogs.com/gif.latex?P(s | O_t )=\text { Probability of a sensor reading value when sleep onset is observed at a time bin } t " />
-
-
-markdown: kramdown
-
-kramdown:
-  input: GFM
 
 
 # Teoria
@@ -27,21 +10,9 @@ kramdown:
 ### Neurônio Artificial
 ### Conceito de Redes Neurais
 ### Rede MLP
-:blush:
 
-$$
 E(n)=\frac{1}{2Q}\sum_{q=1}^{Q}e_{q}^{2}(n)
-$$
 
-```math_def
-\newcommand{\foo}{Foo}
-```
-
-\begin{equation}
-E(n)=\frac{1}{2Q}\sum_{q=1}^{Q}e_{q}^{2}(n)
-\end{equation}
-	
-$\sqrt{3x-1}+(1+x)^2$
 
 ### Rede RBF
 
