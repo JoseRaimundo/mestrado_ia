@@ -17,7 +17,7 @@ Nh=15;
 Ns=1; 
 WMED=.07; 
 eta=0.01; 
-
+%-vec_treino.^2+vec_treino.^5+vec_treino.^5-vec_treino.^5;
 
 %load('fun_dataset.mat');  % N xmax xtreino dtreino xteste dteste   
 %display(dtreino)
