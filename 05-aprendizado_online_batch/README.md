@@ -4,7 +4,7 @@
 
 Alunos:
 
-José Raimundo Barbosa
+José Raimundo Barbosa<br>
 Reuelson Augusto de Carvalho Ferreira
 
 ### 1 - Alterar formas de treinamento
