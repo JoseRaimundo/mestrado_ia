@@ -1,3 +1,4 @@
+
 ## Atividade 5
 ### 1 - Alterar formas de treinamento
 Alterar a forma de treinamento do algoritmo MLP (originalmente como batch) para treinamento online, e alterar a forma de treinamento do algoritmo RBF (originalmente online) para batch, e comparar o ajuste da curva do original com a versão modificada.
@@ -45,6 +46,15 @@ Foi eliminado a indexação aleatória dos exemplos e criado uma alimentação (
 #### 1.3 - Comparação dos algoritmos
 
 Para a comparação, os algoritmos foram executados 3 vezes cadas, constando aqui apenas o melhor caso das execuções.
+
+
+<br>
+
+
+<img src="https://avatars2.githubusercontent.com/u/10813914?s=400&u=329443fbf1b83015384a33a130bf0725633fe4c5&v=4" width="300" float="right" />  
+<img src="https://avatars2.githubusercontent.com/u/10813914?s=400&u=329443fbf1b83015384a33a130bf0725633fe4c5&v=4" width="300" float="left" />
+
+
 
 ### 2 - Adicionar o termo momento (alpha) no algoritmo MLP.
 
