@@ -1,4 +1,5 @@
 
+
 ## Atividade 5
 ### 1 - Alterar formas de treinamento
 Alterar a forma de treinamento do algoritmo MLP (originalmente como batch) para treinamento online, e alterar a forma de treinamento do algoritmo RBF (originalmente online) para batch, e comparar o ajuste da curva do original com a versão modificada.
@@ -84,5 +85,21 @@ Para analisar os impactos provocados pelo termo momento, foram utilizados difere
 | 0.001 | Erro médio quadrático: 0.10541<br>    Duraçäo do Treinamento: 1.5864 min<br> TESTE<br>   Erro absoluto máximo: 1.043<br>    Erro médio quadrático: 0.1073<br>   Duraçäo do Teste: 0.046 s |
 
 ### 3 - Adaptar a taxa de aprendizado durante o treinamento no algoritmo MLP.
+
+Para ajuste da taxa de aprendizado, foi utilizado o seguinte comando.
+
+	      eta = (ajuste_n * ((1+(ajuste_k/ajuste_n)+(i/ajuste_t))/(1+(ajuste_k/ajuste_n)*(i/ajuste_t)+ajuste_t*(i/ajuste_t)^2)));
+
+Em que ajuste_n, ajuste_t e ajuste_k são constantes positivas e com valores entre 0 e 1, abstraídos da equação:
+
+
+##### Resultados
+
+|Teste| Valor das constantes | Resultados |
+|--|--|--|
+|1| ajuste_n = 0.2<br>ajuste_t = 0.1<br>ajuste_k = 0.1  | Erro médio quadrático: 0.007329<br>   Duraçäo do Treinamento: 1.0344 min<br>   Erro absoluto máximo: 0.35799<br>   Erro médio quadrático: 0.0066418<br>   Duraçäo do Teste: 0.047 s |
+|2| ajuste_n = 0.2<br>ajuste_t = 0.2<br>ajuste_k = 0.1  | Erro médio quadrático: 0.0035996<br>   Duraçäo do Treinamento: 1.0781 min<br>  Erro absoluto máximo: 0.25204<br>Erro médio quadrático: 0.0032459<br>   Duraçäo do Teste: 0.047 s |
+|3| ajuste_n = 0.2<br>ajuste_t = 0.2<br>ajuste_k = 0.2  |Número de épocas: 20000<br>   Erro médio quadrático: 0.0015072<br>   Duraçäo do Treinamento: 1.074 min<br>   Erro absoluto máximo: 0.11178<br>   Erro médio quadrático: 0.0014597<br>   Duraçäo do Teste: 0.047 s  |
+
 
 
