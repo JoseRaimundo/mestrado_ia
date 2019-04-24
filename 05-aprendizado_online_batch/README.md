@@ -48,11 +48,8 @@ Foi eliminado a indexação aleatória dos exemplos e criado uma alimentação (
 Para a comparação, os algoritmos foram executados 3 vezes cadas, constando aqui apenas o melhor caso das execuções.
 
 
-<br>
-
-
-<img src="https://avatars2.githubusercontent.com/u/10813914?s=400&u=329443fbf1b83015384a33a130bf0725633fe4c5&v=4" width="300" float="right" />  
-<img src="https://avatars2.githubusercontent.com/u/10813914?s=400&u=329443fbf1b83015384a33a130bf0725633fe4c5&v=4" width="300" float="left" />
+<img src="https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_original.png?raw=true" width="250" float="right" />  
+<img src="https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_online.png?raw=true" width="250" float="left" />
 
 
 
