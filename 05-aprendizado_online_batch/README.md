@@ -45,17 +45,30 @@ Foi eliminado a indexação aleatória dos exemplos e criado uma alimentação (
 
 #### 1.3 - Comparação dos algoritmos
 
-Para a comparação, os algoritmos foram executados 3 vezes cadas, constando aqui apenas o melhor caso das execuções.
+Para a comparação, os algoritmos foram executados 3 vezes cadas, constando aqui apenas o melhor caso das execuções. Cada execução corresponde à 20000 épocas, cada época consta com 50 exemplos. Os pesos inicial são gerados aleatoriamente. 
 
 |Original  | Online |
 |--|--|
 |![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_original.png?raw=true)  | ![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_online.png?raw=true) |
-
+|1. PARÂMETROS DO PROJETO<br>Exemplos de Treinamento: 51<br>Exemplos de Teste: 5000<br>Taxa de aprendizado: 0.01<br>Pesos, valor médio inicial: 0.07<br>2. CONFIGURACÄO DA REDE NEURAL<br>   Número de Neurönios por Camada<br>   Entrada:      2<br>   Escondida: 15<br>   Saída:          1<br>3. TREINAMENTO<br>   Número de épocas: 20000<br>   Erro médio quadrático: 8.6948e-05<br>   Duraçäo do Treinamento: 1.8279 min<br>4. TESTE<br>   Erro absoluto máximo: 0.088139<br>   Erro médio quadrático: 0.00025574<br>   Duraçäo do Teste: 0.062 s<br>||
 
 
 
 ### 2 - Adicionar o termo momento (alpha) no algoritmo MLP.
 
+O termo momento, consiste em uma constante positiva que controla a influência do ajuste anterior sobre o ajuste atual dos pesos. Dada pela equação:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\Delta&space;w(n)=-\eta&space;\frac{\partial&space;E}{\partial&space;w}(n)&plus;\alpha&space;\Delta&space;w(n-1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\Delta&space;w(n)=-\eta&space;\frac{\partial&space;E}{\partial&space;w}(n)&plus;\alpha&space;\Delta&space;w(n-1)" title="\large \Delta w(n)=-\eta \frac{\partial E}{\partial w}(n)+\alpha \Delta w(n-1)" /></a>
+
+> AVISO: Esta não é uma técnica geral para ganhos de estabilidade e aceleração da convergência
+
+Para analisar os impactos provocados pelo termo momento, foram utilizados diferentes alphas e observado os valores gerados pela rede MLP.
+
+| Valores para alpha | Taxa de erro |
+|--|--|
+| 0.1 |  |
+| 0.01 |  |
+| 0.001 |  |
 
 ### 3 - Adaptar a taxa de aprendizado durante o treinamento no algoritmo MLP.
 
