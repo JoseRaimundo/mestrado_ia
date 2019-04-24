@@ -47,9 +47,10 @@ Foi eliminado a indexação aleatória dos exemplos e criado uma alimentação (
 
 Para a comparação, os algoritmos foram executados 3 vezes cadas, constando aqui apenas o melhor caso das execuções.
 
+|Original  | Online |
+|--|--|
+|![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_original.png?raw=true)  | ![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_online.png?raw=true) |
 
-<img src="https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_original.png?raw=true" width="250" float="right" />  
-<img src="https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_online.png?raw=true" width="250" float="left" />
 
 
 
