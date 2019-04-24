@@ -102,9 +102,11 @@ Em que ajuste_n, ajuste_t e ajuste_k são constantes positivas e com valores ent
 |3| ajuste_n = 0.2<br>ajuste_t = 0.2<br>ajuste_k = 0.2  |Número de épocas: 20000<br>   Erro médio quadrático: 0.0015072<br>   Duraçäo do Treinamento: 1.074 min<br>   Erro absoluto máximo: 0.11178<br>   Erro médio quadrático: 0.0014597<br>   Duraçäo do Teste: 0.047 s  |
 
 Teste 1
+
 ![Teste 1](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/taxa_ajuste1.png?raw=true)
 
 Teste 2
+
 ![Teste 2](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/taxa_ajuste2.png?raw=true)
 
 Teste 3
