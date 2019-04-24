@@ -1,6 +1,12 @@
 
 
 ## Atividade 5
+
+Alunos:
+
+José Raimundo Barbosa
+Reuelson Augusto de Carvalho Ferreira
+
 ### 1 - Alterar formas de treinamento
 Alterar a forma de treinamento do algoritmo MLP (originalmente como batch) para treinamento online, e alterar a forma de treinamento do algoritmo RBF (originalmente online) para batch, e comparar o ajuste da curva do original com a versão modificada.
 
