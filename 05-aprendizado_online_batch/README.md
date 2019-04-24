@@ -3,6 +3,9 @@
 ### 1 - Alterar formas de treinamento
 Alterar a forma de treinamento do algoritmo MLP (originalmente como batch) para treinamento online, e alterar a forma de treinamento do algoritmo RBF (originalmente online) para batch, e comparar o ajuste da curva do original com a versão modificada.
 
+> !AVISO!: todos os testes foram realizados com a seguinte configuração:
+> PARÂMETROS DO PROJETO<br>   Exemplos de Treinamento: 51<br>   Exemplos de Teste: 5000<br>   Taxa de aprendizado: 0.01<br>   Pesos, valor médio inicial: 0.07<br>CONFIGURACÄO DA REDE NEURAL <br>  Número de Neurönios por Camada<br>   Entrada:      2<br>   Escondida: 15<br>   Saída:          1<br>
+
 
 #### 1.1 - Abordagem utilizada para modificar o MLP Batch para online: 
 
@@ -20,6 +23,12 @@ Foi eliminado o segundo laço da da etapa de treinamento do algoritmo original e
 			i = 0;
 		end;
 	end
+##### Resultado
+
+|Batch  | Online |
+|--|--|
+|![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_online_treino.png?raw=true)  |![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_online_treino.png?raw=true) |
+|3. TREINAMENTO<br>   Número de épocas: 20000<br>   Erro médio quadrático: 0.0006475<br>   Duraçäo do Treinamento: 1.7415 min<br>4. TESTE<br>   Erro absoluto máximo: 0.17034<br>   Erro médio quadrático: 0.00045172<br> Duraçäo do Teste: 0.05 s<br> | 3. TREINAMENTO<br>   Número de épocas: 20000<br>   Erro médio quadrático: 0.0001772<br>   Duraçäo do Treinamento: 1.4943 min<br>4. TESTE<br>   Erro absoluto máximo: 0.12541<br>   Erro médio quadrático: 0.00040524<br>   Duraçäo do Teste: 0.062 s|
 
 
 #### 1.2 - Abordagem utilizada para modificar o RBF online para Batch: 
@@ -42,15 +51,20 @@ Foi eliminado a indexação aleatória dos exemplos e criado uma alimentação (
 		end
 	end
 
+##### Resultado
+
+| RBF Online | RBF Batch |
+|--|--|
+|  |  |
+|Treinamento:<br>Número de épocas: 20000<br>Erro médio quadrático : 0.00048196<br>Duraçäo: 120.687 s<br>Generalizaçäo:<br>Erro absoluto máximo : 0.15509<br>Erro médio quadrático: 0.00030956|Treinamento:<br>Número de épocas: 20000<br>Erro médio quadrático : 0.00052886<br>Duraçäo: 117.813 s<br>Generalizaçäo:<br>Erro absoluto máximo : 0.16001<br>Erro médio quadrático: 0.00034722|
+
+
 
 #### 1.3 - Comparação dos algoritmos
 
-Para a comparação, os algoritmos foram executados 3 vezes cadas, constando aqui apenas o melhor caso das execuções. Cada execução corresponde à 20000 épocas, cada época consta com 50 exemplos. Os pesos inicial são gerados aleatoriamente. 
+Para a comparação, os algoritmos foram executados 3 vezes cadas.
 
-|Batch  | Online |
-|--|--|
-|![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_online_treino.png?raw=true)  |![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/mlp_online_treino.png?raw=true) |
-|1. PARÂMETROS DO PROJETO<br>   Exemplos de Treinamento: 51<br>   Exemplos de Teste: 5000<br>   Taxa de aprendizado: 0.01<br>   Pesos, valor médio inicial: 0.07<br>2. CONFIGURACÄO DA REDE EURAL <br>  Número de Neurönios por Camada<br>   Entrada:      2<br>   Escondida: 15<br>   Saída:          1<br>3. TREINAMENTO<br>   Número de épocas: 20000<br>   Erro médio quadrático: 0.0006475<br>   Duraçäo do Treinamento: 1.7415 min<br>4. TESTE<br>   Erro absoluto máximo: 0.17034<br>   Erro médio quadrático: 0.00045172<br> Duraçäo do Teste: 0.05 s<br> | 1. PARÄMETROS DO PROJETO<br>   Exemplos de Treinamento: 51<br>   Exemplos de Teste: 5000<br>   Taxa de aprendizado: 0.01<br>   Pesos, valor médio inicial: 0.07<br>2. CONFIGURACÄO DA REDE NEURAL<br>   Número de Neurönios por Camada<br>   Entrada:      2<br>   Escondida: 15<br>   Saída:          1<br>3. TREINAMENTO<br>   Número de épocas: 20000<br>   Erro médio quadrático: 0.0001772<br>   Duraçäo do Treinamento: 1.4943 min<br>4. TESTE<br>   Erro absoluto máximo: 0.12541<br>   Erro médio quadrático: 0.00040524<br>   Duraçäo do Teste: 0.062 s|
+
 
 
 
@@ -64,11 +78,11 @@ O termo momento, consiste em uma constante positiva que controla a influência d
 
 Para analisar os impactos provocados pelo termo momento, foram utilizados diferentes alphas e observado os valores gerados pela rede MLP.
 
-| Valores para alpha | Taxa de erro |
+| Valores para alpha | Saída da MLP |
 |--|--|
-| 0.1 |  |
-| 0.01 |  |
-| 0.001 |  |
+| 0.1 | Erro médio quadrático: 0.0042301 <br>   Duraçäo do Treinamento: 1.6255 min <br>TESTE <br>   Erro absoluto máximo: 0.17114 <br>   Erro médio quadrático: 0.0040505 <br>   Duraçäo do Teste: 0.063 s |
+| 0.01 | Erro médio quadrático: 0.015026 <br>  Duraçäo do Treinamento: 1.5849 min <br>  TESTE <br>   Erro absoluto máximo: 0.42001<br>   Erro médio quadrático: 0.015093<br>   Duraçäo do Teste: 0.063 s |
+| 0.001 | Erro médio quadrático: 0.10541<br>    Duraçäo do Treinamento: 1.5864 min<br> TESTE<br>   Erro absoluto máximo: 1.043<br>    Erro médio quadrático: 0.1073<br>   Duraçäo do Teste: 0.046 s |
 
 ### 3 - Adaptar a taxa de aprendizado durante o treinamento no algoritmo MLP.
 

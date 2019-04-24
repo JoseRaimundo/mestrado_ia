@@ -1,4 +1,3 @@
-
 clear all, close all, clc,help mlp_backpropagation.m, global grafico legenda
 
 to=clock; 
@@ -10,18 +9,8 @@ Ns=1;
 WMED=.07; 
 eta=0.01; 
 
-xtreino = [0:1/50:1]; %size 1 - 51
-dtreino = [0:1/50:1];
-%dtreino = rand(51,1);
-vec_treino = [0:1/50:1]
-
-dtreino = vec_treino.^2;
-N = 51; %51
-
-NT = 5000; %5000
-xmax = 1; %6
-
-termo_alpha = 0.1;
+load('fun_dataset.mat');
+termo_alpha = 0.001;
 %grafico_dataset(xtreino,dtreino);
 Wji=randn(Nh,Ni).*WMED; Wkj=randn(Ns,Nh+1).*WMED;
 
@@ -36,8 +25,8 @@ for epoca=1:epochmax
       yj=(1)./(1+exp(-netj'));  
       z(i)=Wkj*[-1 yj]';
       e=d-z(i); etae=-eta*e;  
-      deltaWkj=deltaWkj-etae*[-1 yj];
-      deltaWji=termo_alpha*deltaWji-etae.*(Wkj(:,2:Nh+1).*yj.*(1-yj))'*xi; 
+      deltaWkj=deltaWkj-etae*[-1 yj]* termo_alpha;
+      deltaWji=deltaWji-etae.*(Wkj(:,2:Nh+1).*yj.*(1-yj))'*xi; 
       E(i)=0.5*e^2; 
     end
 
