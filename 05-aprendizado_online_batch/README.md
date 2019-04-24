@@ -35,27 +35,26 @@ Foi eliminado o segundo laço da da etapa de treinamento do algoritmo original e
 Foi eliminado a indexação aleatória dos exemplos e criado uma alimentação (conjunto de exemplos) de tamanho estático, essa alimentação é apresentada ao algoritmo por um novo laço adicionado dentro do laço que interage as épocas, também foi adicionado variáveis globais que ajudam no armazenamento do ajuste da variáveis **t**, **v** e **Sigma**. Estas variáveis são incrementadas a cada época com os valores de variáveis locais, que por sua vez se ajustam continuamente durante o treinamento. [Código compleo aqui](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/rbf_batch.m)
 
 	%% Variáveis globais
-	global_t = 0;
-	global_v = 0;
-	global_sigma = 0;
-
 	for epoca=1:epochmax
 		for i=1:N
 			...
 			% AJUSTE DOS PESOS, CENTROS E LARGURAS DA REDE RBF
 
-			t=t+(2*etat*e).*V(2:Nh+1).*y(2:Nh+1).*(xi-t)./(sigma.^1);
-			sigma=sigma+(etas*e).*V(2:Nh+1).*y(2:Nh+1).*norma./(sigma.^2);
-			V=V+(etav*e).*y;
+			t=t+global_t+(2*etat*e).*V(2:Nh+1).*y(2:Nh+1).*(xi-t)./(sigma.^1);
+			sigma=sigma+global_sigma+(etas*e).*V(2:Nh+1).*y(2:Nh+1).*norma./(sigma.^2);
+			V=V+global_v+(etav*e).*y;
 			E(i)=0.5*e^2;
 		end
+	global_sigma = global_sigma + sigma;
+	global_v = global_v + v;
+	global_t = global_t + t;
 	end
 
 ##### Resultado
 
 | RBF Online | RBF Batch |
 |--|--|
-|  |  |
+| ![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/rbf_online_treino.png?raw=true) | ![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/05-aprendizado_online_batch/img/rbf_batch_treino.png?raw=true) |
 |Treinamento:<br>Número de épocas: 20000<br>Erro médio quadrático : 0.00048196<br>Duraçäo: 120.687 s<br>Generalizaçäo:<br>Erro absoluto máximo : 0.15509<br>Erro médio quadrático: 0.00030956|Treinamento:<br>Número de épocas: 20000<br>Erro médio quadrático : 0.00052886<br>Duraçäo: 117.813 s<br>Generalizaçäo:<br>Erro absoluto máximo : 0.16001<br>Erro médio quadrático: 0.00034722|
 
 
