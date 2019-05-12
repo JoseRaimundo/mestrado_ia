@@ -4,7 +4,7 @@ Neste trabalho, foi utilizado uma rede neural artificial do tipo MLP para classi
 
 **Solução proposta:** Para o treinamento, foi reaproveitado a função de exemplo, porém utilizando uma nova abordagem. A base de dados inicial realiza a marcação de pontos a partir de uma coordenada especifica, como é apresentado na figura a seguir.
 
-![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/06-primero_projeto/img/resultado_o.png)
+![enter image description here](img/resultado_o.png)
 
 Para obter uma forma de "C", foi considerado os pontos (P) fora da área marcada pelo algoritmo original, e também foi ignorado os pontos em que o Cosseno(P(n)) > Seno(P(n)). Conforme a lógica da imagem a seguir.
 
@@ -44,7 +44,7 @@ Para os testes, foram consideradas no máximo 50 épocas. As figuras são config
 #### 3. Desenvolva uma aplicação de modelagem em 2-D e verifique a propriedade de generalização de uma rede neural sem realimentação.
 
 
-#### 4. Desenvolva uma aplicação de classificação de padrõres e verifique a propriedade de generalização de uma rede neural sem realimentação.
+#### 4. Desenvolva uma aplicação de classificação de padrões e verifique a propriedade de generalização de uma rede neural sem realimentação.
 
 #### 5. Elabore um relatório técnico descrevendo as atividades realizadas.
 
