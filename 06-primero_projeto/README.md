@@ -10,9 +10,11 @@ Montagem dos dataset: Para o treinmaneto, foi reaproveitado a função de exempl
 O algoritmo fornecido realiza a compressão de bits por meio de neurônios em uma rede do tipo RPROC. Inicialmente o algoritmo está configurados com: 10 Neurônios de entrada, 5 ocultos e 10 de saída (considerando uma entrada de 10 bits). 
 
 **Solução proposta:** A estrutura RPROC do algoritmo original foi mantido, porém foi reconfigurado as camadas de neurônios. Considerando que a quantidade de bits B, é necessário fornecer a mesma quantidade de entradas X e saída Y, também é considerado como resultado correto quando X = Y (uma vez que se trata de uma lógica de compressão). Logo, foram realizadas alterações apenas na camada de neurônios oculta. 
+
 **Resultado** 
 
  
+ ![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/06-primero_projeto/img/encoder.png)
 
 
 
