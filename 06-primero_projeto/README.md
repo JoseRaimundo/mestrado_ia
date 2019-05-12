@@ -1,8 +1,21 @@
 #### 1. Alterar o conjunto de dados do classificador
 
-Neste trabalho, foi utilizado uma rede neural artificial do tipo MLP para classificação binária de pontos em duas classes, correspondentes a pontos dentro ou fora da área de uma forma semelhante à uma letra. Para gerar a base de dados, é gerado uma matriz de pontos aleatórios dos quais são selecionados os pontos desejados. Para esta atividade foi utilizada a área correspondente a letra "C", o formato da letra foi selecionado devido a maior facilidade de autoajusto do algoritmo MLP em relação à variação da área da figura.
+Neste trabalho, foi utilizado uma rede neural artificial do tipo MLP para classificação binária de pontos em duas classes, correspondentes a pontos dentro ou fora da área de uma forma semelhante à uma letra. Para gerar a base de dados, é gerado uma matriz de pontos aleatórios dos quais são selecionados os pontos dentro da área com formato desejados. Para esta atividade foi utilizada a área correspondente a letra "C", o formato da letra foi selecionado devido a maior facilidade de autoajusto do algoritmo MLP em relação à variação da área da figura.
 
-Montagem dos dataset: Para o treinmaneto, foi reaproveitado a função de exemplo, porém utilizando uma nova abordagem. A função original utiliza as cordendadas do ponto 
+**Solução proposta:** Para o treinamento, foi reaproveitado a função de exemplo, porém utilizando uma nova abordagem. A base de dados inicial realiza a marcação de pontos a partir de uma coordenada especifica, como é apresentado na figura a seguir.
+
+![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/06-primero_projeto/img/resultado_o.png)
+
+Para obter uma forma de "C", foi considerado os pontos (P) fora da área marcada pelo algoritmo original, e também foi ignorado os pontos em que o Cosseno(P(n)) > Seno(P(n)). Conforme a lógica da imagem a seguir.
+
+![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/06-primero_projeto/img/area_c.png)
+
+**Resultado**
+
+Para obter este resultado, foram utilizadas 1000 épocas.
+
+![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/06-primero_projeto/img/resultado_c.png)
+
 
 
 
@@ -13,6 +26,7 @@ O algoritmo fornecido realiza a compressão de bits por meio de neurônios em um
 
 **Resultado** 
 
+Para os testes, foram consideradas no máximo 50 épocas. As figuras são configuradas como tabelas em que cada linha corresponde a uma combinação de bits (neste caso, cada linha contem um bit com valor um (1) bit e os demais bits com valor zero (0)).
  
  ![enter image description here](https://github.com/JoseRaimundo/mestrado_ia/blob/master/06-primero_projeto/img/encoder.png)
 
