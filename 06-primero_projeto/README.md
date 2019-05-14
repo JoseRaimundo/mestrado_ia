@@ -48,7 +48,7 @@ O desafio propõe a configuração de outra base de dado que ilustre resultado s
 
 **Solução proposta:** Foi implementado na rede artificial MLPRPROP o modelo para queda de tensão em três condições diferentes para determinados condutores, os dados estão representados na Tabela a seguir:
 
-![enter image description here](/img/tabela_tensao.png)
+![enter image description here](img/tabela_tensao.png)
 
 Para a inserção dos dados na rede foi necessário as seguintes modificações no código fornecido:
 	
@@ -60,13 +60,13 @@ Para a inserção dos dados na rede foi necessário as seguintes modificações 
 
 **Resultado:** O gráfico a seguir aparentemente o resultado obtido, é possível observar uma breve separação das curvas, isto ocorre devido a proximidade dos sinais. Na figura a seguir é apresentado o gráfico de treinamento.
 
-![enter image description here](/img/treino_rproc.png)
+![enter image description here](img/treino_rproc.png)
 
 
 Resultado para 2000 épocas (epochmax=2000)
 
 
-  ![enter image description here](/img/resultado_rproc.png)
+  ![enter image description here](img/resultado_rproc.png)
 
 
 #### 4. Desenvolva uma aplicação de classificação de padrões e verifique a propriedade de generalização de uma rede neural sem realimentação.
