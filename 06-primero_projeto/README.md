@@ -1,34 +1,52 @@
-#### 1. Alterar o conjunto de dados do classificador
-
-Neste trabalho, foi utilizado uma rede neural artificial do tipo MLP para classificação binária de pontos em duas classes, correspondentes a pontos dentro ou fora da área de uma forma semelhante à uma letra. Para gerar a base de dados, é gerado uma matriz de pontos aleatórios dos quais são selecionados os pontos dentro da área com formato desejados. Para esta atividade foi utilizada a área correspondente a letra "C", o formato da letra foi selecionado devido a maior facilidade de autoajusto do algoritmo MLP em relação à variação da área da figura.
-
-**Solução proposta:** Para o treinamento, foi reaproveitado a função de exemplo, porém utilizando uma nova abordagem. A base de dados inicial realiza a marcação de pontos a partir de uma coordenada especifica, como é apresentado na figura a seguir.
-
-![enter image description here](img/resultado_o.png)
-
-Para obter uma forma de "C", foi considerado os pontos (P) fora da área marcada pelo algoritmo original, e também foi ignorado os pontos em que o Cosseno(P(n)) > Seno(P(n)). Conforme a lógica da imagem a seguir.
-
-![enter image description here](img/area_c.png)
-
-**Resultado**
-
-Para obter este resultado, foram utilizadas 1000 épocas.
-
-![enter image description here](img/resultado_c.png)
-
-
-####  2 . Altere a observe o comportamento do algoritmo de compressão de bits com o objetivo de identificar qual o menor custo possível  de neurônios necessários para manter a eficiência de compressão.
-O algoritmo fornecido realiza a compressão de bits por meio de neurônios em uma rede do tipo RPROC. Inicialmente o algoritmo está configurados com: 10 Neurônios de entrada, 5 ocultos e 10 de saída (considerando uma entrada de 10 bits). 
-
-**Solução proposta:** A estrutura RPROC do algoritmo original foi mantido, porém foi reconfigurado as camadas de neurônios. Considerando que a quantidade de bits B, é necessário fornecer a mesma quantidade de entradas X e saída Y, também é considerado como resultado correto quando X = Y (uma vez que se trata de uma lógica de compressão). Logo, foram realizadas alterações apenas na camada de neurônios oculta. Para ampliar as configurações de neurônios, foi alterado a base de dados para manipular casos com: 8, 10 e 12 bits.
-
-**Resultado:** Para os testes, foram consideradas no máximo 50 épocas. As figuras são configuradas como tabelas em que cada linha corresponde a uma combinação de bits (neste caso, cada linha contem um bit com valor um (1) bit e os demais bits com valor zero (0)).
- 
- ![enter image description here](img/encoder.png)
-
-
 #### 1. Mostre que:
-<center><a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;E(n)}{\partial&space;\eta&space;_{ji}(n)}=-\frac{\partial&space;E(n)}{\partial&space;w&space;_{ji}(n)}&space;\frac{\partial&space;E(n-1)}{\partial&space;w&space;_{ji}(n-1)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;E(n)}{\partial&space;\eta&space;_{ji}(n)}=-\frac{\partial&space;E(n)}{\partial&space;w&space;_{ji}(n)}&space;\frac{\partial&space;E(n-1)}{\partial&space;w&space;_{ji}(n-1)}" title="\frac{\partial E(n)}{\partial \eta _{ji}(n)}=-\frac{\partial E(n)}{\partial w _{ji}(n)} \frac{\partial E(n-1)}{\partial w _{ji}(n-1)}" /></a></center>
+
+![enter image description here](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;%5Ceta&space;_%7Bji%7D%28n%29%7D=-%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;w&space;_%7Bji%7D%28n%29%7D%5Cfrac%7B%5Cpartial&space;E%28n-1%29%7D%7B%5Cpartial&space;w&space;_%7Bji%7D%28n-1%29%7D)
+
+**Resposta:** 
+
+
+Sabendo que:
+
+![enter image description here](https://latex.codecogs.com/gif.latex?v_%7Bj%7D%28n%29=%5Csum&space;w_%7Bji%7D%28n%29y_%7Bi%7D%28n%29)
+
+e:
+
+![enter image description here](https://latex.codecogs.com/gif.latex?w_%7Bji%7D%28n%29=w_%7Bji%7D%28n-1%29-%5Ceta&space;_%7Bji%7D%28n%29%5Cfrac%7B%5Cpartial&space;E%28n-1%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n-1%29%7D)
+  
+
+Pela regra da cadeia, temos:
+
+\frac{\partial E(n)}{\partial \eta _{ji}(n)}=\frac{\partial E(n)}{\partial y_{j}}\frac{\partial y_{j}(n)}{\partial v_{j}(n)}\frac{\partial v_{j}(n)}{\partial \eta _{ji}(n)}
+
+  
+
+Portanto deve-se calcular os três termos da regra da cadeia para determinar o que se quer demonstrar.
+
+Calculando o primeiro termo:
+
+\frac{\partial E(n)}{\partial w_{ji}(n)}=\frac{\partial E(n)}{\partial w_{ji}(n)}\frac{\partial w_{ji}(n)}{\partial v_{j}(n)}=\frac{1}{y_{j}(n)}\frac{\partial E(n)}{\partial w_{ji}(n)}
+
+Calculando o segundo termo:
+
+Pela equação (1), tem-se:
+
+\frac{\partial y_{j}(n)}{\partial v_{j}(n)}=1
+
+Calculando o terceiro e último termo, tem-se:
+
+\frac{\partial v_{j}(n)}{\partial \eta _{ji}(n)}=\frac{\partial \sum w_{ji}(n)y_{i}(n)}{\partial \eta _{ji}(n)}=\frac{\partial \sum [\left ( w_{ji}(n-1)-\eta _{ji}(n)\frac{\partial E(n-1)}{\partial w_{ji}(n-1)} \right )y_{i}(n))]}{\partial \eta _{ji}(n)}
+
+Simplificando a equação acima, obtemos o resultado do terceiro e último termo da regra da cadeia:
+
+\frac{\partial v_{j}(n)}{\partial \eta _{ji}(n)}=-\frac{\partial E(n-1)}{\partial w_{ji}(n-1)}y_{i}(n)
+
+Logo, explicitando todos os termos calculados para a regra da cadeia tem-se:
+
+\frac{\partial E(n)}{\partial \eta _{ji}(n)}=-\frac{1}{y_{j}(n)}\frac{\partial E(n)}{\partial w_{ji}(n)}1\frac{\partial E(n-1)}{\partial w_{ji}(n-1)}y_{i}(n)
+
+Então, como queríamos demostrar:
+
+\frac{\partial E(n)}{\partial \eta _{ji}(n)}=-\frac{\partial E(n)}{\partial w_{ji}(n)}\frac{\partial E(n-1)}{\partial w_{ji}(n-1)}
 
 #### Resposta:
 
@@ -48,7 +66,7 @@ O desafio propõe a configuração de outra base de dado que ilustre resultado s
 
 **Solução proposta:** Foi implementado na rede artificial MLPRPROP o modelo para queda de tensão em três condições diferentes para determinados condutores, os dados estão representados na Tabela a seguir:
 
-![enter image description here](/img/tabela_tensao.png)
+![enter image description here](img/tabela_tensao.png)
 
 Para a inserção dos dados na rede foi necessário as seguintes modificações no código fornecido:
 	
@@ -60,18 +78,64 @@ Para a inserção dos dados na rede foi necessário as seguintes modificações 
 
 **Resultado:** O gráfico a seguir aparentemente o resultado obtido, é possível observar uma breve separação das curvas, isto ocorre devido a proximidade dos sinais. Na figura a seguir é apresentado o gráfico de treinamento.
 
-![enter image description here](/img/treino_rproc.png)
+![enter image description here](img/treino_rproc.png)
 
 
 Resultado para 2000 épocas (epochmax=2000)
 
 
-  ![enter image description here](/img/resultado_rproc.png)
+  ![enter image description here](img/resultado_rproc.png)
 
 
 #### 4. Desenvolva uma aplicação de classificação de padrões e verifique a propriedade de generalização de uma rede neural sem realimentação.
 
-#### 5. Elabore um relatório técnico descrevendo as atividades realizadas.
+
+Neste trabalho, foi utilizado uma rede neural artificial do tipo MLP para classificação binária de pontos em duas classes, correspondentes a pontos dentro ou fora da área de uma forma semelhante à uma letra. Para gerar a base de dados, é gerado uma matriz de pontos aleatórios dos quais são selecionados os pontos dentro da área com formato desejados. Para esta atividade foi utilizada a área correspondente a letra "C", o formato da letra foi selecionado devido a maior facilidade de autoajusto do algoritmo MLP em relação à variação da área da figura.
+
+**Solução proposta:** Para o treinamento, foi reaproveitado a função de exemplo, porém utilizando uma nova abordagem. A base de dados inicial realiza a marcação de pontos a partir de uma coordenada especifica, como é apresentado na figura a seguir.
+
+![enter image description here](img/resultado_o.png)
+
+Para obter uma forma de "C", foi considerado os pontos (P) fora da área marcada pelo algoritmo original, e também foi ignorado os pontos em que o Cosseno(P(n)) > Seno(P(n)). Conforme a lógica da imagem a seguir.
+
+![enter image description here](img/area_c.png)
+
+Para isso, foi utilizado os seguintes comandos de código:
+
+    for n=1:exemplos
+    % Condição para limitar os casos de treino
+    if sqrt(x1(n)^2+x2(n)^2) > 1 && cos(x1(n)) > sin(x1(n)) && sqrt(x1(n)^2+x2(n)^2) < 4
+            p=p+1; 
+            xb1(p)=x1(n); 
+            xb2(p)=x2(n); 
+            D(n,:)=[0 1];
+    else
+            m=m+1; 
+            xa1(m)=x1(n); 
+            xa2(m)=x2(n); 
+            D(n,:)=[1 0]; 
+    end
+    X(n,:)=[-1 x1(n) x2(n)];
+	end
+
+**Resultado**
+
+Para obter este resultado, foram utilizadas 1000 épocas.
+
+![enter image description here](img/resultado_c.png)
+
+
+####  5. Altere a observe o comportamento do algoritmo de compressão de bits com o objetivo de identificar qual o menor custo possível  de neurônios necessários para manter a eficiência de compressão.
+
+
+O algoritmo fornecido realiza a compressão de bits por meio de neurônios em uma rede do tipo RPROC. Inicialmente o algoritmo está configurados com: 10 Neurônios de entrada, 5 ocultos e 10 de saída (considerando uma entrada de 10 bits). 
+
+**Solução proposta:** A estrutura RPROC do algoritmo original foi mantido, porém foi reconfigurado as camadas de neurônios. Considerando que a quantidade de bits B, é necessário fornecer a mesma quantidade de entradas X e saída Y, também é considerado como resultado correto quando X = Y (uma vez que se trata de uma lógica de compressão). Logo, foram realizadas alterações apenas na camada de neurônios oculta. Para ampliar as configurações de neurônios, foi alterado a base de dados para manipular casos com: 8, 10 e 12 bits.
+
+**Resultado:** Para os testes, foram consideradas no máximo 50 épocas. As figuras são configuradas como tabelas em que cada linha corresponde a uma combinação de bits (neste caso, cada linha contem um bit com valor um (1) bit e os demais bits com valor zero (0)).
+ 
+ ![enter image description here](img/encoder.png)
+
 
 
 

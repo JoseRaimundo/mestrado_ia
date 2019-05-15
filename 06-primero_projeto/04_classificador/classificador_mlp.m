@@ -41,18 +41,12 @@ xb1=[];
 xb2=[];
 
 for n=1:exemplos
-    if sqrt(x1(n)^2+x2(n)^2) > 1 && cos(x1(n)) > sin(x1(n))
-%             m=m+1; 
-%             xa1(m)=x1(n); 
-%             xa2(m)=x2(n); 
-%             D(n,:)=[1 0];
-      %  else
+    if sqrt(x1(n)^2+x2(n)^2) > 1 && cos(x1(n)) > sin(x1(n)) && sqrt(x1(n)^2+x2(n)^2) < 4
             p=p+1; 
             xb1(p)=x1(n); 
             xb2(p)=x2(n); 
             D(n,:)=[0 1];
     else
-        
             m=m+1; 
             xa1(m)=x1(n); 
             xa2(m)=x2(n); 
