@@ -41,12 +41,37 @@ Logo, explicitando todos os termos calculados para a regra da cadeia tem-se:
 
 ![enter image description here](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;%5Ceta&space;_%7Bji%7D%28n%29%7D=-%5Cfrac%7B1%7D%7By_%7Bj%7D%28n%29%7D%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n%29%7D1%5Cfrac%7B%5Cpartial&space;E%28n-1%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n-1%29%7Dy_%7Bi%7D%28n%29)
 
-Então, como queríamos demostrar:
+Então, como queríamos demonstrar:
 
 ![enter image description here](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;%5Ceta&space;_%7Bji%7D%28n%29%7D=-%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n%29%7D%5Cfrac%7B%5Cpartial&space;E%28n-1%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n-1%29%7D)
 
 
-#### 2. Estude a convergência de diferentes algoritmos de primeira ordem para aproximação de funções de uma variável (1-D) através de redes FNN.
+#### 2. Estude a convergência de diferentes algoritmos de primeira ordem para aproximação de funções de uma variável (1-D).
+
+Esta tarefa, consiste em executar e observar a convergência dos algoritmos apresentados na disciplina. 
+
+**Experimento:** Para cada algoritmo, foi considerado um total de 10000 épocas, com este valor é possível observar a eficiência em termos de agilidade do ajuste. Foi utilizado o mesmo dataset para os algoritmos avaliados.
+
+1 - Rede MLP com algoritmo de ajuste Backpropagation, e função de ativação logistic (I).  
+
+![enter image description here](img/mlp_backpropagation.png)
+
+2 - Rede MLP com algoritmo de ajuste Backpropagation, e função de ativação monomolecular.  
+
+![enter image description here](img/mlp_backpropagation_monomolecular.png)
+
+3 - Rede RBF, e função de ativação logistic (I).  
+
+![enter image description here](img/rbf.png)
+
+4 - Rede MLP, com algoritmo de ajuste RPROC e função de ativação logistic (I).  
+
+![enter image description here](img/mlp_rproc.png)
+
+
+**Conclusão:** Considerando a mesma quantidade de épocas para todos os algoritmos avaliados, foi possível observar a velocidade e precisão do algoritmo MLP com uso do RPROC, como é possível observar nas legendas dos gráficos, em que consta a taxa de erro.
+
+
 
 #### Reposta:
 
@@ -81,6 +106,9 @@ Resultado para 2000 épocas (epochmax=2000)
 
 
   ![enter image description here](img/resultado_rproc.png)
+
+
+Código do experimento: [Clique aqui!](https://github.com/JoseRaimundo/mestrado_ia/tree/master/06-primero_projeto/03_generalizacao)
 
 
 #### 4. Desenvolva uma aplicação de classificação de padrões e verifique a propriedade de generalização de uma rede neural sem realimentação.
@@ -121,6 +149,9 @@ Para obter este resultado, foram utilizadas 1000 épocas.
 ![enter image description here](img/resultado_c.png)
 
 
+Código do experimento: [Clique aqui](https://github.com/JoseRaimundo/mestrado_ia/tree/master/06-primero_projeto/04_classificador)
+
+
 ####  5. Altere a observe o comportamento do algoritmo de compressão de bits com o objetivo de identificar qual o menor custo possível  de neurônios necessários para manter a eficiência de compressão.
 
 
@@ -133,6 +164,4 @@ O algoritmo fornecido realiza a compressão de bits por meio de neurônios em um
  ![enter image description here](img/encoder.png)
 
 
-
-
-
+Código do experimento: [Clique aqui!](https://github.com/JoseRaimundo/mestrado_ia/tree/master/06-primero_projeto/05_encoder)
