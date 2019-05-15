@@ -4,7 +4,6 @@
 
 **Resposta:** 
 
-
 Sabendo que:
 
 ![enter image description here](https://latex.codecogs.com/gif.latex?v_%7Bj%7D%28n%29=%5Csum&space;w_%7Bji%7D%28n%29y_%7Bi%7D%28n%29)
@@ -16,39 +15,36 @@ e:
 
 Pela regra da cadeia, temos:
 
-\frac{\partial E(n)}{\partial \eta _{ji}(n)}=\frac{\partial E(n)}{\partial y_{j}}\frac{\partial y_{j}(n)}{\partial v_{j}(n)}\frac{\partial v_{j}(n)}{\partial \eta _{ji}(n)}
-
-  
+![enter image description here](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;%5Ceta&space;_%7Bji%7D%28n%29%7D=%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;y_%7Bj%7D%7D%5Cfrac%7B%5Cpartial&space;y_%7Bj%7D%28n%29%7D%7B%5Cpartial&space;v_%7Bj%7D%28n%29%7D%5Cfrac%7B%5Cpartial&space;v_%7Bj%7D%28n%29%7D%7B%5Cpartial&space;%5Ceta&space;_%7Bji%7D%28n%29%7D)
 
 Portanto deve-se calcular os três termos da regra da cadeia para determinar o que se quer demonstrar.
 
 Calculando o primeiro termo:
 
-\frac{\partial E(n)}{\partial w_{ji}(n)}=\frac{\partial E(n)}{\partial w_{ji}(n)}\frac{\partial w_{ji}(n)}{\partial v_{j}(n)}=\frac{1}{y_{j}(n)}\frac{\partial E(n)}{\partial w_{ji}(n)}
+![enter image description here](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n%29%7D=%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n%29%7D%5Cfrac%7B%5Cpartial&space;w_%7Bji%7D%28n%29%7D%7B%5Cpartial&space;v_%7Bj%7D%28n%29%7D=%5Cfrac%7B1%7D%7By_%7Bj%7D%28n%29%7D%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n%29%7D)
 
 Calculando o segundo termo:
 
 Pela equação (1), tem-se:
 
-\frac{\partial y_{j}(n)}{\partial v_{j}(n)}=1
+![enter image description here](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial&space;y_%7Bj%7D%28n%29%7D%7B%5Cpartial&space;v_%7Bj%7D%28n%29%7D=1)
 
 Calculando o terceiro e último termo, tem-se:
 
-\frac{\partial v_{j}(n)}{\partial \eta _{ji}(n)}=\frac{\partial \sum w_{ji}(n)y_{i}(n)}{\partial \eta _{ji}(n)}=\frac{\partial \sum [\left ( w_{ji}(n-1)-\eta _{ji}(n)\frac{\partial E(n-1)}{\partial w_{ji}(n-1)} \right )y_{i}(n))]}{\partial \eta _{ji}(n)}
+![enter image description here](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial&space;v_%7Bj%7D%28n%29%7D%7B%5Cpartial&space;%5Ceta&space;_%7Bji%7D%28n%29%7D=%5Cfrac%7B%5Cpartial&space;%5Csum&space;w_%7Bji%7D%28n%29y_%7Bi%7D%28n%29%7D%7B%5Cpartial&space;%5Ceta&space;_%7Bji%7D%28n%29%7D=%5Cfrac%7B%5Cpartial&space;%5Csum&space;%5B%5Cleft&space;%28&space;w_%7Bji%7D%28n-1%29-%5Ceta&space;_%7Bji%7D%28n%29%5Cfrac%7B%5Cpartial&space;E%28n-1%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n-1%29%7D&space;%5Cright&space;%29y_%7Bi%7D%28n%29%29%5D%7D%7B%5Cpartial&space;%5Ceta&space;_%7Bji%7D%28n%29%7D)
 
 Simplificando a equação acima, obtemos o resultado do terceiro e último termo da regra da cadeia:
 
-\frac{\partial v_{j}(n)}{\partial \eta _{ji}(n)}=-\frac{\partial E(n-1)}{\partial w_{ji}(n-1)}y_{i}(n)
+![enter image description here](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial&space;v_%7Bj%7D%28n%29%7D%7B%5Cpartial&space;%5Ceta&space;_%7Bji%7D%28n%29%7D=-%5Cfrac%7B%5Cpartial&space;E%28n-1%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n-1%29%7Dy_%7Bi%7D%28n%29)
 
 Logo, explicitando todos os termos calculados para a regra da cadeia tem-se:
 
-\frac{\partial E(n)}{\partial \eta _{ji}(n)}=-\frac{1}{y_{j}(n)}\frac{\partial E(n)}{\partial w_{ji}(n)}1\frac{\partial E(n-1)}{\partial w_{ji}(n-1)}y_{i}(n)
+![enter image description here](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;%5Ceta&space;_%7Bji%7D%28n%29%7D=-%5Cfrac%7B1%7D%7By_%7Bj%7D%28n%29%7D%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n%29%7D1%5Cfrac%7B%5Cpartial&space;E%28n-1%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n-1%29%7Dy_%7Bi%7D%28n%29)
 
 Então, como queríamos demostrar:
 
-\frac{\partial E(n)}{\partial \eta _{ji}(n)}=-\frac{\partial E(n)}{\partial w_{ji}(n)}\frac{\partial E(n-1)}{\partial w_{ji}(n-1)}
+![enter image description here](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;%5Ceta&space;_%7Bji%7D%28n%29%7D=-%5Cfrac%7B%5Cpartial&space;E%28n%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n%29%7D%5Cfrac%7B%5Cpartial&space;E%28n-1%29%7D%7B%5Cpartial&space;w_%7Bji%7D%28n-1%29%7D)
 
-#### Resposta:
 
 #### 2. Estude a convergência de diferentes algoritmos de primeira ordem para aproximação de funções de uma variável (1-D) através de redes FNN.
 
