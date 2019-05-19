@@ -20,7 +20,21 @@ eta=0.01;
 
 load('fun_dataset.mat');
 
-
+% %display(dtreino)
+% 
+x = linspace(0,1.5);
+y = humps(x)/40;
+cont = 1
+for valor=1:99
+    if mod(valor,2) == 1
+        dtreino(cont) = y(valor);
+        dteste(cont) = y(valor);
+        zteste(cont) = y(valor);
+        cont = cont + 1;
+    end
+end
+dtreino(cont) = y(valor);
+dteste(cont) = y(valor);
 Wji=rand(Nh,Ni).*WMED; 
 Wkj=rand(Ns,Nh+1).*WMED;
 E = 0;
@@ -37,7 +51,7 @@ for epoca=1:epochmax * N
     z(i)=Wkj*[-1 yj]';
     e=d-z(i); 
     etae=-eta*e;  
-    E = 0.5*e^2; 
+    E(i)  = 0.5*e^2; 
     
     Wkj=Wkj+(-etae*[-1 yj]);
     Wji=Wji+(-etae.*(Wkj(:,2:Nh+1).*yj.*(1-yj))'*xi); 
@@ -45,7 +59,7 @@ for epoca=1:epochmax * N
     
     if i == 51 
         exibi_epoca = exibi_epoca + 1;
-        SSE(exibi_epoca)=sum(E)/N; 
+        SSE(exibi_epoca)= sum(E)/N; 
         grafico_treino(xtreino, xmax, dtreino, z, exibi_epoca,epochexb, SSE(exibi_epoca));
         i = 0;
     end;
