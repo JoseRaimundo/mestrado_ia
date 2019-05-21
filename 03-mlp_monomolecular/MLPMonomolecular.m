@@ -1,29 +1,37 @@
-% funcionando por neuronio
+
+
+% CEFET/PB/GTEMA, Joao Pessoa, 18/10/2005.
+% PROJETO DE REDES NEURAIS SEM REALIMENTACÄO 
+% ARQUITETURA: REDE MLP - Multilayer Perceptrons
+% CONFIGURACÄO: UMA CAMADA OCULTA - UM NEURÔNIO DE SAÍDA LINEAR
+% ALGORITMO: BACKPROPAGATION
+% APLICACAO: Aproximaçäo de Funçöes
+% AUTOR: Dr. PAULO HENRIQUE DA FONSECA SILVA
+
 clear all, close all, clc,help mlp_backpropagation.m, global grafico legenda
 
-to=clock;      
-epochexb=100;  
-epochmax=20000; 
-Ni=2; 
-Nh=15; 
-Ns=1; 
+to=clock; epochmax=20000; epochexb=100; Ni=2; Nh=15; Ns=1; WMED=.07; eta=0.01; 
 
-WMED=.07; 
-eta=0.01; 
+load fun_dataset;  % N xmax xtreino dtreino xteste dteste  
+x = linspace(0,1.5)*2;
+y = 8.^sin(x);
+cont = 1
+for valor=1:99
+    if mod(valor,2) == 1
+        dtreino(cont) = y(valor);
+        dteste(cont) = y(valor);
+        zteste(cont) = y(valor);
+        cont = cont + 1;
+    end
+end
+dtreino(cont) = y(valor);
+dteste(cont) = y(valor);
+zteste(cont) = y(valor);
 
-%load('fun_dataset.mat');  % N xmax xtreino dtreino xteste dteste   
-%display(dtreino)
+% grafico_dataset(xtreino,dtreino);
 
-xtreino = [0:1/50:1]; %size 1 - 51
-dtreino = [0:1/50:1];
-%dtreino = rand(51,1);
-vec_treino = [0:1/50:1]
-%Alimentando o conjunto de treinamento com um array exponencial
-dtreino = vec_treino.^2;
-N = 51; %51
-
-NT = 5000; %5000
-xmax = 1; %6
+% NT = 5000; %5000
+% xmax = 1; %6
 %%% fun_dataset contem:
 %%% --> xtreino - conjunto de treinamento 
 
@@ -34,9 +42,9 @@ Wji=rand(Nh,Ni).*WMED;
 Wkj=rand(Ns,Nh+1).*WMED;
 
 %%% Alimentando com valores aleatórios entre 0.001 e 1 
-beta_j 	= 0.01 * rand(Ns, Nh);
-alfa_j  = 0.01 * rand(Ns, Nh);
-k_j     = 0.01 * rand(Ns, Nh) ;
+beta_j = 0.01 * [0:1/50:1];
+alfa_j  = 0.01 * [0:1/50:1];
+k_j     = 0.01 * [0:1/50:1];
 
 for epoca=1:epochmax
     
@@ -49,7 +57,7 @@ for epoca=1:epochmax
       d=dtreino(i); 
       netj=Wji*xi';  
       %yj=(1)./(1+exp(-netj'));
-      yj = alfa_j .* (1 - beta_j .* exp(-k_j .* netj'));
+      yj = alfa_j(i) .* (1 - beta_j(i) .* exp(-k_j(i) .* netj'));
       z(i)=Wkj*[-1 yj]';
       e=d-z(i); 
       etae=-eta*e;  
@@ -57,10 +65,11 @@ for epoca=1:epochmax
       deltaWji=deltaWji-etae.*(Wkj(:,2:Nh+1).*yj.*(1-yj))'*xi; 
       E(i)=0.5*e^2; 
       
-      alfa_j = -etae * (1- beta_j .* exp(-k_j .* netj'));
-      beta_j = etae  * (alfa_j .* exp(-k_j .* netj'));     
-      k_j    = -etae * (beta_j .* netj' .* exp(-k_j .* netj'));
-          
+      for key = 1:Nh
+          alfa_j(i) = -etae * (1- beta_j(i) .* exp(-k_j(i) .* netj(key)));
+          beta_j(i) = etae  * (alfa_j(i) .* exp(-k_j(i) .*  netj(key)));     
+          k_j(i)    = -etae * (beta_j(i) .*  netj(key) .* exp(-k_j(i) .*  netj(key)));
+      end
       
     end
     display(etae);
@@ -78,10 +87,13 @@ end
 TBP=etime(clock,to)/60;	
 grafico_sse(SSE,TBP);
 to=clock; 
+
+
 for n=1:length(xteste)
     xi=[-1 xteste(n)]';     
     netj=Wji*xi;    
-    yj=(1)./(1+exp(-netj'));        
+   % yj=(1)./(1+exp(-netj'));        
+    yj = alfa_j(n) .* (1 - beta_j(n) .* exp(-k_j(n) .* netj'));
     zteste(n)=Wkj*[-1 yj]';
 end
 

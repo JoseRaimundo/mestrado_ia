@@ -1,29 +1,21 @@
 
-
 clear all, close all, clc,help mlpbp_treino.m
-epochmax=50000; epochexb=50;
+epochmax=20000; epochexb=50;
 Ni=1; Nh=12; Ns=1; WMED=.01; etat=0.001; etas=0.0001; etav=0.007; 
 
-%CONJUNTO DE TREINAMENTO
-xtreino = [0:1/50:1]; %size 1 - 51
-dtreino = [0:1/50:1];
-%dtreino = rand(51,1);
-vec_treino = [0:1/50:1]
-%Alimentando o conjunto de treinamento com um array exponencial
-dtreino = vec_treino.^2;
-N = 51; %51
-
-NT = 5000; %5000
-xmax = 1; %6
+load fun_dataset  % N xmax xtreino dtreino xteste dteste   
 
   % INICIALIZAÇÃO DOS PESOS
   V=randn(Ns,Nh+1).*WMED;
-  
+
+  global_v=randn(Ns,Nh+1).*WMED;
   % INICIALIZAÇÃO DOS CENTROS VARIA
   % ESCOLHIDOS ALEATORIAMENTE DO CONJUNTO DE TREINAMENTO
   idx=randperm(Nh);
   for j=1:Nh
+   global_t(j)=xtreino(idx(j));
    t(j)=xtreino(idx(j));
+
   end 
   
   % INICIALIZAÇÃO DAS LARGURAS 
@@ -32,7 +24,7 @@ xmax = 1; %6
   for j=1:Nh
    for i=1:Nh
     if i>j
-     DE=(t(i)-t(j))^2;
+     DE=(global_t(i)-global_t(j))^2;
      if DE>DEmax
       DEmax=DE;
      end
@@ -41,17 +33,12 @@ xmax = 1; %6
   end
   
   sigma=rand([1,Nh]).*((DEmax^2)/Nh)*100;
-  
+
+  global_sigma=rand([1,Nh]).*((DEmax^2)/Nh)*100;
   % ÉPOCAS DE TREINAMENTO
   to=clock; 
-  global_t = 0;
-  global_v = 0;
-  global_sigma = 0;
+
   for epoca=1:epochmax
-         
-    % GERAÇÃO DE ÍNDICES ALEATÓRIOS E APRESENTAÇÃO DE EXEMPLOS DE TREINAMENTO
-    
-    idc=randperm(N);
     E=[];
 
 
@@ -70,9 +57,13 @@ xmax = 1; %6
         % AJUSTE DOS PESOS, CENTROS E LARGURAS DA REDE RBF
         t=t+(2*etat*e).*V(2:Nh+1).*y(2:Nh+1).*(xi-t)./(sigma.^1);
         sigma=sigma+(etas*e).*V(2:Nh+1).*y(2:Nh+1).*norma./(sigma.^2);
-        V=V+(etav*e).*y;
+        V=V +(etav*e).*y;
         E(i)=0.5*e^2;
     end
+    
+    global_sigma = global_sigma + sigma;
+    global_t = global_t + t;
+    global_v = global_v + V;
     
     SSE(epoca)=sum(E)/N;
     if epoca==1
@@ -123,9 +114,9 @@ xmax = 1; %6
   % COMPUTAÇÃO NO SENTIDO DIRETO
   for n=1:length(xteste)
      xi=xteste(n);
-     norma=(xi-t).^2;  		% x: escalar, t: vetor
-    y=[1 exp(-norma./sigma)];
-    zteste(n)=V*y'; 
+     norma=(xi-global_t).^2;  		% x: escalar, t: vetor
+    y=[1 exp(-norma./global_sigma)];
+    zteste(n)=global_v*y'; 
   end
   eteste=abs(dteste-zteste);
   Emax=max(eteste);
@@ -167,6 +158,3 @@ disp('Generalizaçäo:');
 disp(['Erro absoluto máximo : ' num2str(Emax)]);
 disp(['Erro médio quadrático: ' num2str(Eav)]);   
 save rbfbp_netdata.mat N NT etat etas etav WMED Ni Nh Ns SSE TFBP Emax Eav t sigma V   
-
-
-
