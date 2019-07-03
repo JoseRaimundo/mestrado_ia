@@ -6,35 +6,26 @@
 % AUTOR: Dr. PAULO HENRIQUE DA FONSECA SILVA
 
 clear all, close all, clc,help mlpbp_treino.m
-epochmax=50000; epochexb=50;
+epochmax=20000; epochexb=50;
 Ni=1; Nh=12; Ns=1; WMED=.01; etat=0.001; etas=0.0001; etav=0.007; 
 
 %CONJUNTO DE TREINAMENTO
-xtreino = [0:1/50:1]; %size 1 - 51
-dtreino = [0:1/50:1];
-%dtreino = rand(51,1);
-vec_treino = [0:1/50:1]
-%Alimentando o conjunto de treinamento com um array exponencial
-dtreino = vec_treino.^2;
-N = 51; %51
+load fun_dataset  % N xmax xtreino dtreino xteste dteste   
+x = linspace(0,1.5);
+y = humps(x)/40;
+cont = 1
+for valor=1:99
+    if mod(valor,2) == 1
+        dtreino(cont) = y(valor);
+        dteste(cont) = y(valor);
+        zteste(cont) = y(valor);
+        cont = cont + 1;
+    end
+end
+dtreino(cont) = y(valor);
+dteste(cont) = y(valor);
 
-NT = 5000; %5000
-xmax = 1; %6
-
-set(gcf,'Position',[1 33 800 494]); 
-axs=axes;
-set(axs,'NextPlot','Add','Box','On') 
-a=plot(xtreino,dtreino,'ro');set(a,'LineWidth',2)  
-xla=xlabel('x'); 
-yla=ylabel('d');
-tit=title('Conjunto de Treinamento: (x, d)');
-leg=legend([num2str(N) ' Exemplos de treinamento' ]);
-set(axs,'FontName','TimesNewRoman','FontSize',12,'FontWeight','Bold')
-set(xla,'FontName','TimesNewRoman','FontSize',12,'FontWeight','Bold')
-set(yla,'FontName','TimesNewRoman','FontSize',12,'FontWeight','Bold')
-set(leg,'FontName','TimesNewRoman','FontSize',11,'FontWeight','Bold')
-set(tit,'FontName','Arial','FontSize',16,'FontWeight','Normal')
-pause(2),close
+% plot(xtreino,dtreino,'ro');set(a,'LineWidth',2)  
 
   % INICIALIZAÇÃO DOS PESOS
   V=randn(Ns,Nh+1).*WMED;
@@ -150,7 +141,7 @@ pause(2),close
   set(gcf,'Position',[1 33 800 494]); 
   axs=axes;
   set(axs,'NextPlot','Add','Box','On') 
-  a=plot(xteste.*xmax,dteste,'r.',xteste.*xmax,zteste,'k');set(a,'LineWidth',2)  
+  a=plot(xteste.*xmax,dteste,'r.',xteste.*xmax,dteste,'k');set(a,'LineWidth',2)  
    leg=legend('Conjunto de teste', 'Saída da rede RBF',...
    ['Erro absoluto máximo : ' num2str(Emax)],['Erro médio quadrático: ' num2str(Eav)]);
    xla=xlabel('xi'); 
@@ -184,6 +175,7 @@ disp('Generalizaçäo:');
 disp(['Erro absoluto máximo : ' num2str(Emax)]);
 disp(['Erro médio quadrático: ' num2str(Eav)]);   
 save rbfbp_netdata.mat N NT etat etas etav WMED Ni Nh Ns SSE TFBP Emax Eav t sigma V   
+
 
 
 

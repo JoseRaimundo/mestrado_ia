@@ -1,33 +1,14 @@
 
-% CEFET/PB/GTEMA, Joao Pessoa, 18/10/2005.
-% PROJETO DE REDES NEURAIS SEM REALIMENTACÄO 
-% ARQUITETURA: REDE MLP - Multilayer Perceptrons
-% CONFIGURACÄO: UMA CAMADA OCULTA - UM NEURÔNIO DE SAÍDA LINEAR
-% ALGORITMO: BACKPROPAGATION
-% APLICACAO: Aproximaçäo de Funçöes
-% AUTOR: Dr. PAULO HENRIQUE DA FONSECA SILVA
 
 clear all, close all, clc,help mlp_backpropagation.m, global grafico legenda
 
 to=clock; epochmax=20000; epochexb=100; Ni=2; Nh=15; Ns=1; WMED=.07; eta=0.01; 
 
-load fun_dataset;  % N xmax xtreino dtreino xteste dteste  
-x = linspace(0,1.5);
-y = humps(x)/40;
-cont = 1
-for valor=1:99
-    if mod(valor,2) == 1
-        dtreino(cont) = y(valor);
-        dteste(cont) = y(valor);
-        zteste(cont) = y(valor);
-        cont = cont + 1;
-    end
-end
-dtreino(cont) = y(valor);
-dteste(cont) = y(valor);
-% grafico_dataset(xtreino,dtreino);
+load fun_dataset;  % N xmax xtreino dtreino xteste dteste   
+%grafico_dataset(xtreino,dtreino);
 
 Wji=randn(Nh,Ni).*WMED; Wkj=randn(Ns,Nh+1).*WMED;
+ajuste_k = 200;
 
 for epoca=1:epochmax
     
@@ -36,7 +17,9 @@ for epoca=1:epochmax
     for i=1:N
       xi=[-1 xtreino(i)]; d=dtreino(i); 
       netj=Wji*xi';  yj=(1)./(1+exp(-netj'));  z(i)=Wkj*[-1 yj]';
-      e=d-z(i); etae=-eta*e;  
+      e=d-z(i); 
+      eta = ajuste_k/epochmax;
+      etae=-eta*e;  
       deltaWkj=deltaWkj-etae*[-1 yj];
       deltaWji=deltaWji-etae.*(Wkj(:,2:Nh+1).*yj.*(1-yj))'*xi; 
       E(i)=0.5*e^2; 
