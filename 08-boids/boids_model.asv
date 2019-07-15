@@ -17,18 +17,15 @@ f = figure;
 plane = Plane(f,[640/3 360/3],boids);
 t=linspace(0,10,100);
 hold on;
-sep = ['Sep. = ' num2str(boids(10).r_sep,'%d')];
-ali = ['Ali. = ' num2str(boids(10).r_ali,'%d')];
-coe = ['Coe. = ' num2str(boids(10).r_coh,'%d')];
+sep = ['Sep. ' num2str(boids(10).r_sep,'%d')];
+sep = ['Ali. ' num2str(boids(10).r_sep,'%d')];
+sep = ['Coe. ' num2str(boids(10).r_sep,'%d')];
 
 h = zeros(3, 1);
-h(1) = plot(NaN,NaN,'ok');
-h(2) = plot(NaN,NaN,'ok');
+h(1) = plot(NaN,NaN,'or');
+h(2) = plot(NaN,NaN,'ob');
 h(3) = plot(NaN,NaN,'ok');
-lgnd = legend(h, sep,ali,coe);
-set(lgnd, 'Box', 'off');
-
+legend(h, sep,'blue','black');
 
 flock.run(plane);
-
 

@@ -24,6 +24,7 @@ classdef Plane
                 pos = [boids(i).position(1)-1 boids(i).position(2)-1 5 5];
                 
                 obj.boids_figure_handles(i) =  patch(x,y,'r');
+                
 %                 obj.boids_figure_handles(i) = rectangle('Position', pos, 'Curvature', [1 1],...
 %                     'FaceColor',[0 0 0]);
             end
@@ -32,4 +33,5 @@ classdef Plane
     end
     
 end
+
 
