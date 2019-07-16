@@ -55,24 +55,8 @@ classdef Boid
              
         end
         
-        function distancia = dist2(x1,y1,x2,y2)
-            % DIST2 calcula a distancia entre dois pontos
-            % A funcao DIST2 calcula a distancia entre os
-            % pontos (x1,y1) e (x2,y2) no sistema cartesiano.
-            %
-            % Chamada: distancia = dist2(x1,y1,x2,y2)
-            % Variaveis:
-            % x1 - posicao x do ponto 1
-            % y1 - posicao y do ponto 1
-            % x2 - posicao x do ponto 2
-            % y2 - posicao y do ponto 2
-            % distancia – distancia entre os dois pontos
-            % Revisoes (...)
-            % Calcula distancia
-            
-        end
-        
-        %% Função de calculo da aceleração
+         
+        %% Funcao de calculo da aceleracao
         function obj = apply_force(obj, sep_force, coh_force,  ali_force)
             obj.acceleration = obj.acceleration+sep_force+coh_force+ali_force;
         end
@@ -95,7 +79,7 @@ classdef Boid
             end
         end
         
-        %% Função para determinar as bordas
+        %% Funcao para determinar as bordas
         function obj = borders(obj, lattice_size)
             if obj.position(1) < -obj.r
                 obj.position(1)=lattice_size(1)+obj.r;
@@ -116,7 +100,7 @@ classdef Boid
         
         
                 
-        %% Função para atualizar os boids
+        %% Funcao para atualizar os boids
         function obj = update(obj)
             if obj.tipo ~= 2
                 obj.velocity = obj.velocity + obj.acceleration;
@@ -136,7 +120,7 @@ classdef Boid
             steer = steer./norm(steer).*obj.max_force;
         end
         
-        %% Função para calcular a colisão
+        %% Funcao para calcular a colisao
         function [steer] = colision(obj, boids)
             steer = [0,0];
             count = 0;
@@ -168,7 +152,7 @@ classdef Boid
             end
         end
         
-        %% Função para calcular o predador
+        %% Funcao para calcular o predador
         function [steer] = predador(obj, boids)
             steer = [0,0];
             count = 0;
@@ -201,7 +185,7 @@ classdef Boid
         end
         
         
-        %% Função para calcular a separação
+        %% Funcao para calcular a separacao
         function [steer] = seperate(obj, boids)
             desired_separation = obj.r_sep;
             steer = [0,0];
@@ -244,7 +228,7 @@ classdef Boid
         end
         
         
-        %% Função para calcular o alinhamento
+        %% Funcao para calcular o alinhamento
         function steer = align(obj, boids)
             neighbor_dist = obj.r_ali;
             sum = [0 0];
@@ -276,7 +260,7 @@ classdef Boid
         end
         
         
-        %% Função para calcular a coesão
+        %% Funcao para calcular a coesao
         function steer = cohesion(obj, boids)
             neighbor_dist = obj.r_coh;
             sum = [0 0];
